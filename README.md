@@ -116,7 +116,7 @@ Switch to the repository root directory (make sure you're not still in the **sna
 
 Followed by:
 
-```mvn liberty:run-server```
+```mvn liberty:run```
 
 The application includes a "startup EJB" (impemented via [ControllerBean.java](src/main/java/com/ibm/websphere/sample/startup/ControllerBean.java)) which runs the job when the application starts.
 
@@ -141,7 +141,7 @@ Please refer to the [ci.maven](https://github.com/WASdev/ci.maven) repository fo
 
 # Notice
 
-© Copyright IBM Corporation 2018.
+Â© Copyright IBM Corporation 2018.
 
 # License
 
