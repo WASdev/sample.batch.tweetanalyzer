@@ -19,9 +19,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>net.wasdev.wlp.maven.parent</groupId>
+        <groupId>io.openliberty.tools</groupId>
         <artifactId>liberty-maven-app-parent</artifactId>
-        <version>2.6</version>
+        <version>3.2.2</version>
     </parent>
     <groupId>net.wasdev.wlp.sample</groupId>
     <artifactId>sample-batch-tweetanalyzer</artifactId>
@@ -37,6 +37,7 @@
         <warContext>/web</warContext>
         <tweets.analyzed.db.url>${project.build.directory}/liberty/wlp/usr/shared/resources/TweetAnalysisDB</tweets.analyzed.db.url>
         <jobrepository.db.url>${project.build.directory}/liberty/wlp/usr/shared/JobRepositoryDB</jobrepository.db.url>
+        <liberty.version>20.0.0.8</liberty.version>
         <packaging.type>usr</packaging.type>
     </properties>
     <profiles>
@@ -159,21 +160,16 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>net.wasdev.wlp.maven.plugins</groupId>
+                <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
                     <assemblyArtifact>
-                        <groupId>com.ibm.websphere.appserver.runtime</groupId>
-                        <!-- Seems to provide the fastest install given the needed features -->
-                        <artifactId>wlp-webProfile8</artifactId>
-                        <version>18.0.0.3</version>
+                        <groupId>io.openliberty</groupId>
+                        <artifactId>openliberty-kernel</artifactId>
+                        <version>${liberty.version}</version>
                         <type>zip</type>
                     </assemblyArtifact>
-                    <configFile>src/main/liberty/config/server.xml</configFile>
-                    <features>
-                        <acceptLicense>true</acceptLicense>
-                    </features>
                     <include>${packaging.type}</include>
                     <skipTestServer>true</skipTestServer>
                     <bootstrapProperties>
